@@ -1,0 +1,12 @@
+-- -- 1. Username too short
+-- INSERT INTO users (username, email, password_hash) VALUES ('ab', 'ab@example.com', repeat('x',60));
+-- -- 2. Username with invalid characters
+-- INSERT INTO users (username, email, password_hash) VALUES ('bad*name', 'badname@example.com', repeat('x',60));
+-- -- 3. Duplicate username
+-- INSERT INTO users (username, email, password_hash) VALUES ('alice123', 'alice2@example.com', repeat('x',60));
+-- -- 4. Duplicate email
+-- INSERT INTO users (username, email, password_hash) VALUES ('newuser', 'alice@example.com', repeat('x',60));
+-- -- 5. Password hash too short
+-- INSERT INTO users (username, email, password_hash) VALUES ('user5', 'user5@example.com', 'short');
+-- -- 6. Invalid email format
+-- INSERT INTO users (username, email, password_hash) VALUES ('user6', 'invalidemail', repeat('x',60));

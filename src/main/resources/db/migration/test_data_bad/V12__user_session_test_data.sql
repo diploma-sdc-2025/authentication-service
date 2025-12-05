@@ -1,0 +1,15 @@
+-- -- last_activity_at before started_at
+-- INSERT INTO user_session (user_id, refresh_token_id, device_info, started_at, last_activity_at)
+-- VALUES (1, 1, 'Alice Bad Device', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP - INTERVAL '1 hour');
+-- -- ended_at before started_at
+-- INSERT INTO user_session (user_id, refresh_token_id, device_info, started_at, last_activity_at, ended_at)
+-- VALUES (1, 1, 'Alice Bad Device 2', CURRENT_TIMESTAMP - INTERVAL '1 hour', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP - INTERVAL '2 hours');
+-- -- Invalid user_id (foreign key)
+-- INSERT INTO user_session (user_id, refresh_token_id, device_info, started_at, last_activity_at)
+-- VALUES (999, 1, 'Unknown Device', CURRENT_TIMESTAMP - INTERVAL '1 hour', CURRENT_TIMESTAMP);
+-- -- Invalid refresh_token_id (foreign key)
+-- INSERT INTO user_session (user_id, refresh_token_id, device_info, started_at, last_activity_at)
+-- VALUES (1, 999, 'Alice Unknown Token', CURRENT_TIMESTAMP - INTERVAL '1 hour', CURRENT_TIMESTAMP);
+-- -- last_activity_at equal to started_at minus 1 second (violates check)
+-- INSERT INTO user_session (user_id, refresh_token_id, device_info, started_at, last_activity_at)
+-- VALUES (2, 2, 'Bob Bad Session', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP - INTERVAL '1 second');

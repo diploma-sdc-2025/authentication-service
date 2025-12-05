@@ -1,0 +1,8 @@
+-- -- expires_at before created_at
+-- INSERT INTO refresh_tokens (user_id, token_hash, expires_at, created_at) VALUES (1, 'badtoken1', CURRENT_TIMESTAMP - INTERVAL '1 day', CURRENT_TIMESTAMP);
+-- -- Duplicate token_hash
+-- INSERT INTO refresh_tokens (user_id, token_hash, expires_at) VALUES (1, 'tokenhash_alice_1', CURRENT_TIMESTAMP + INTERVAL '1 day');
+-- -- Invalid user_id (foreign key violation)
+-- INSERT INTO refresh_tokens (user_id, token_hash, expires_at) VALUES (999, 'token_nonexistent', CURRENT_TIMESTAMP + INTERVAL '1 day');
+-- -- expires_at equal to created_at (violates check)
+-- INSERT INTO refresh_tokens (user_id, token_hash, expires_at, created_at) VALUES (2, 'badtoken2', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);

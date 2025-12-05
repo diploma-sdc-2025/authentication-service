@@ -1,0 +1,11 @@
+-- -- expires_at before created_at
+-- INSERT INTO password_reset_tokens (user_id, token_hash, expires_at, created_at) VALUES (1, 'pwreset_bad1', CURRENT_TIMESTAMP - INTERVAL '1 day', CURRENT_TIMESTAMP);
+-- -- used_at before created_at
+-- INSERT INTO password_reset_tokens (user_id, token_hash, expires_at, created_at, used_at) VALUES (1, 'pwreset_bad2', CURRENT_TIMESTAMP + INTERVAL '1 day', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP - INTERVAL '1 hour');
+-- -- Duplicate token_hash
+-- INSERT INTO password_reset_tokens (user_id, token_hash, expires_at, created_at) VALUES (1, 'pwresettoken_alice_1', CURRENT_TIMESTAMP + INTERVAL '1 day', CURRENT_TIMESTAMP);
+-- -- Invalid user_id
+-- INSERT INTO password_reset_tokens (user_id, token_hash, expires_at, created_at) VALUES (999, 'pwreset_invalid', CURRENT_TIMESTAMP + INTERVAL '1 day', CURRENT_TIMESTAMP);
+-- -- used_at after expires_at
+-- INSERT INTO password_reset_tokens (user_id, token_hash, expires_at, created_at, used_at) VALUES (2, 'pwreset_bad3', CURRENT_TIMESTAMP + INTERVAL '1 hour', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP + INTERVAL '2 hours');
+--
