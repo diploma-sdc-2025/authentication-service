@@ -3,7 +3,6 @@ CREATE TABLE user_session (
                                user_id INT NOT NULL,
                                refresh_token_id INT,
                                device_info VARCHAR(255),
-                               user_agent TEXT,
                                started_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
                                last_activity_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
                                ended_at TIMESTAMP,
@@ -15,10 +14,10 @@ CREATE TABLE user_session (
 
                                CONSTRAINT chk_user_sessions_activity_after_start CHECK (
                                    last_activity_at >= started_at
-                                   ),
+                               ),
                                CONSTRAINT chk_user_sessions_ended_logic CHECK (
                                    ended_at IS NULL OR ended_at >= started_at
-                                   )
+                               )
 );
 
 CREATE INDEX idx_user_sessions_user_id ON user_session(user_id);
