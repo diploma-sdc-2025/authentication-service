@@ -1,4 +1,4 @@
-package org.java.diploma.service.authserviceback;
+package org.java.diploma.service.authservice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

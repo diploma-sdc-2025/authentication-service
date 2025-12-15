@@ -9,9 +9,7 @@
                                     device_info VARCHAR(255),
 
                                     CONSTRAINT fk_refresh_tokens_user_id
-                                        FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
-                                    CONSTRAINT chk_refresh_tokens_expires_future CHECK (expires_at > created_at)
-
+                                        FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
     );
 
     CREATE INDEX idx_refresh_tokens_user_id ON refresh_tokens(user_id);

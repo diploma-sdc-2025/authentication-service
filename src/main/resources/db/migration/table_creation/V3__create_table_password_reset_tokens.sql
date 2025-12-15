@@ -7,11 +7,7 @@ CREATE TABLE password_reset_tokens (
                                        used_at TIMESTAMP,
 
                                        CONSTRAINT fk_password_reset_tokens_user_id
-                                           FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
-                                       CONSTRAINT chk_password_reset_expires CHECK (expires_at > created_at),
-                                       CONSTRAINT chk_password_reset_used_logic CHECK (
-                                           used_at IS NULL OR (used_at >= created_at AND used_at <= expires_at)
-                                           )
+                                           FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
 
 CREATE INDEX idx_password_reset_user_id ON password_reset_tokens(user_id);

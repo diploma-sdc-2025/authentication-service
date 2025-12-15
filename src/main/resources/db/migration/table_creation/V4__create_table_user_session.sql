@@ -10,17 +10,9 @@ CREATE TABLE user_session (
                                CONSTRAINT fk_user_sessions_user_id
                                    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
                                CONSTRAINT fk_user_sessions_refresh_token_id
-                                   FOREIGN KEY (refresh_token_id) REFERENCES refresh_tokens(id) ON DELETE SET NULL,
-
-                               CONSTRAINT chk_user_sessions_activity_after_start CHECK (
-                                   last_activity_at >= started_at
-                               ),
-                               CONSTRAINT chk_user_sessions_ended_logic CHECK (
-                                   ended_at IS NULL OR ended_at >= started_at
-                               )
+                                   FOREIGN KEY (refresh_token_id) REFERENCES refresh_tokens(id) ON DELETE SET NULL
 );
 
 CREATE INDEX idx_user_sessions_user_id ON user_session(user_id);
 CREATE INDEX idx_user_sessions_refresh_token_id ON user_session(refresh_token_id);
-CREATE INDEX idx_user_sessions_started_at ON user_session(started_at DESC);
-CREATE INDEX idx_user_sessions_last_activity ON user_session(last_activity_at DESC);
+
